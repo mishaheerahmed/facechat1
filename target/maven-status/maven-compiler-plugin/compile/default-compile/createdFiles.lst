@@ -1,0 +1,4 @@
+com\facechat\facechatbackend\dao\UserImpl.class
+com\facechat\facechatbackend\config\ApplicationContextConfig.class
+com\facechat\facechatbackend\dao\UserDao.class
+com\facechat\facechatbackend\model\User.class
