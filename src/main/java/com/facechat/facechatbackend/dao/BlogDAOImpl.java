@@ -104,7 +104,7 @@ public class BlogDAOImpl implements BlogDAO
 		}
 		return false;
 	}
-
+@Transactional
 	@Override
 	public boolean updateBlog(Blog blog) {
 		try{

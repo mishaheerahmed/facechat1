@@ -35,12 +35,13 @@ public class ForumDAOTest {
 			
 			forumDAO=(ForumDAO)context.getBean("forumDAO");
 		}
+	@Ignore
 		@Test
 		public void addForumTest()
 		{
 			Forum Forum=new Forum();
 			
-			Forum.setForumId(1001);
+			Forum.setForumId(1004);
 			Forum.setForumName("Core Java");
 			Forum.setForumContent("It is based on Simple Java Concept");
 			Forum.setUsername("sunil");
@@ -55,7 +56,7 @@ public class ForumDAOTest {
 		
 
 
-	@Ignore
+	
 		@Test
 		public void getAllForumTest()
 		{

@@ -30,7 +30,7 @@ static BlogDAO blogDAO;
 		
 		blogDAO=(BlogDAO)context.getBean("blogDAO");
 	}
-	
+@Ignore	
 @Test
 	public void addBlogTest()
 	{
@@ -65,16 +65,16 @@ static BlogDAO blogDAO;
 	@Test
 	public void deleteBlogTest()
 	{
-		Blog blog=(Blog)blogDAO.getBlog(1001);
+		Blog blog=(Blog)blogDAO.getBlog(3);
 	
 		assertTrue("Problem in deletion", blogDAO.deleteBlog(blog));
 	}
 
-	@Ignore
+	
 	@Test
 	public void UpdateBlogTest()
 	{
-		Blog blog=(Blog)blogDAO.getBlog(1001);
+		Blog blog=(Blog)blogDAO.getBlog(7);
 		blog.setBlogContent("OOPS, Exception");
 		blog.setBlogName("Java");
 		assertTrue("Problem in updating", blogDAO.updateBlog(blog));

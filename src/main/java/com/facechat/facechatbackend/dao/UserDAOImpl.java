@@ -51,23 +51,61 @@ public class UserDAOImpl  implements UserDAO{
 		return user;
 	}
 
-	//@Override
+	@Transactional
+	@Override
 	public boolean updateOnlineStatus(String status, UserDetail user) {
+		try
+		{
+			user.setIsOnline(status);;
+			sessionFactory.getCurrentSession().saveOrUpdate(user);
+			return true;
+		}
+		catch(Exception e)
+		{
+			System.out.println("Exception occured:"+e);
 			return false;
+		}
+	
+
 	}
 
+    	
 	@Override
 	public List<UserDetail> getAllUsers() {
 		Session session = sessionFactory.openSession();
-		List<UserDetail> userlist=(List<UserDetail>)session.createQuery("from Blog").list();
+		List<UserDetail> userlist=(List<UserDetail>)session.createQuery("from UserDetail").list();
 		session.close();
 		return userlist;
 	}
 
+	@Transactional
 	@Override
 	public boolean deleteUser(UserDetail user) {
-		// TODO Auto-generated method stub
-		return false;
+		try
+		{
+			sessionFactory.getCurrentSession().delete(user);
+			return true;
+			
+		}
+		catch( Exception e)
+		{
+			System.out.println("Exception occured"+e);
+			return false;
+		}
+	}
+    @Transactional
+	@Override
+	public boolean updateUser(UserDetail user) {
+		try{
+			sessionFactory.getCurrentSession().saveOrUpdate(user);
+			return true;
+			}
+			catch(Exception e)
+			{
+			e.printStackTrace();
+			return false;
+			}
+
 	}
 
 	

@@ -1,5 +1,7 @@
 package com.facechat.facechatbackend.dao;
 
+import java.util.List;
+
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -21,6 +23,7 @@ public JobDAOImpl(SessionFactory sessionFactory2) {
 }
 
 @Override
+@Transactional
 public boolean addJob(Job job) {
 	try {
 		sessionFactory.getCurrentSession().save(job);
@@ -32,6 +35,7 @@ public boolean addJob(Job job) {
 }
 
 @Override
+@Transactional
 public boolean updateJob(Job job) {
 	try{
 		sessionFactory.getCurrentSession().saveOrUpdate(job);
@@ -44,6 +48,7 @@ public boolean updateJob(Job job) {
 		}
 }
 @Override
+@Transactional
 public boolean deleteJob(Job job) {
 	try
 	{
@@ -60,6 +65,7 @@ public boolean deleteJob(Job job) {
 
 
 @Override
+@Transactional
 public Job getJob(int jobId) {
 	Session session=sessionFactory.openSession();
     Job job=session.get(Job.class,jobId);
@@ -67,6 +73,14 @@ public Job getJob(int jobId) {
     
 		return job;
 
+}
+
+@Override
+public List<Job> getAllJob() {
+	Session session = sessionFactory.openSession();
+	List<Job> jobList=(List<Job>)session.createQuery("from Job").list();
+	session.close();
+	return jobList;
 }
 
 

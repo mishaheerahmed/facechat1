@@ -81,7 +81,7 @@ public class ForumDAOImpl implements ForumDAO {
 	public List<Forum> getAllForums() 
 	{
 		Session session = sessionFactory.openSession();
-		List<Forum> forumList=(List<Forum>)session.createQuery("from forum").list();
+		List<Forum> forumList=(List<Forum>)session.createQuery("from Forum").list();
 		session.close();
 		return forumList;
 	}

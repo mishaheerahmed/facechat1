@@ -32,7 +32,7 @@ public class UserDAOTest {
 			
 			userDAO=(UserDAO)context.getBean("userDAO");
 		}
-
+@Ignore
 	@Test
 	public void addTest()
 	{
@@ -52,15 +52,15 @@ public class UserDAOTest {
 		System.out.println("UserName:"+user.getUserName());
 	}
 
-	@Ignore
+
 	@Test
 	public void getAllUser()
 	{
-		List<UserDetail> userList=(List<UserDetail>)UserDAO.getAllUsers();
+		List<UserDetail> userList=(List<UserDetail>)userDAO.getAllUsers();
 		assertNotNull("User not found",userList.get(0));
 		for(UserDetail user:userList)
 		{
-			System.out.println("Blog Id:"+ user.getUserId()+":::"+ "Blog Name"+user.getUserName());
+			System.out.println("User Id:"+ user.getUserId()+":::"+ "User Name"+user.getUserName());
 		}
 		
 	}
@@ -68,20 +68,28 @@ public class UserDAOTest {
 	@Test
 	public void deleteUserTest()
 	{
-		UserDetail user=(UserDetail)userDAO.get(1001);
-		assertTrue("Problem in deletion", blogDAO.deleteBlog(blog));
+		UserDetail user=(UserDetail)userDAO.getUser(1001);
+		assertTrue("Problem in deletion", userDAO.deleteUser(user));
 	}
 
-	@Ignore
+@Ignore	
 	@Test
-	public void UpdateBlogTest()
+	public void UpdateUserTest()
 	{
-		Blog blog=(Blog)blogDAO.getBlog(1001);
-		blog.setBlogContent("OOPS, Exception");
-		blog.setBlogName("Java");
-		assertTrue("Problem in updating", blogDAO.updateBlog(blog));
+		UserDetail user=(UserDetail)userDAO.getUser(2);
+		user.setUserName("Shaheer");
+		user.setEmailId("shaheerahmed@gmsil.com");
+		assertTrue("Problem in updating", userDAO.updateUser(user));
 	}
 
+	
+	@Test 
+	public void setOnlineStatus()
+	{
+		UserDetail user=(UserDetail)userDAO.getUser(2);
+		assertTrue("Problem in Updating", userDAO.updateOnlineStatus("Y", user));
+		
+		}
 
-
+	
 }

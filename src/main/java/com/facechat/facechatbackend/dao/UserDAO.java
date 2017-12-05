@@ -15,8 +15,8 @@ public interface UserDAO {
 
    public boolean addUser(UserDetail user);
    public boolean updateOnlineStatus(String status,UserDetail user);
-	 //boolean saveUser(User user);
-public List<UserDetail> getAllUsers(); 
+   public boolean updateUser(UserDetail user);
+public List<UserDetail> getAllUsers();
 public UserDetail getUser(int userId);
 public boolean deleteUser(UserDetail user);
 }
