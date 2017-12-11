@@ -30,13 +30,13 @@ static BlogDAO blogDAO;
 		
 		blogDAO=(BlogDAO)context.getBean("blogDAO");
 	}
-@Ignore	
+
 @Test
 	public void addBlogTest()
 	{
 		Blog blog=new Blog();
 		
-		blog.setBlogId(1002);
+		
 		blog.setBlogName("Angular jsJava");
 		blog.setBlogContent("It is based on Simple Java Concept");
 		blog.setUsername("sunil");
@@ -70,13 +70,13 @@ static BlogDAO blogDAO;
 		assertTrue("Problem in deletion", blogDAO.deleteBlog(blog));
 	}
 
-	
+	@Ignore
 	@Test
 	public void UpdateBlogTest()
 	{
 		Blog blog=(Blog)blogDAO.getBlog(7);
 		blog.setBlogContent("OOPS, Exception");
-		blog.setBlogName("Java");
+		blog.setBlogName("Jav");
 		assertTrue("Problem in updating", blogDAO.updateBlog(blog));
 	}
 	@Ignore

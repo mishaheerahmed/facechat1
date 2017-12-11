@@ -12,8 +12,12 @@ import org.springframework.orm.hibernate5.HibernateTransactionManager;
 import org.springframework.orm.hibernate5.LocalSessionFactoryBuilder;
 import org.springframework.transaction.annotation.EnableTransactionManagement;
 
+import com.facechat.facechatbackend.dao.BlogCommentsDAO;
+import com.facechat.facechatbackend.dao.BlogCommentsDAOImpl;
 import com.facechat.facechatbackend.dao.BlogDAO;
 import com.facechat.facechatbackend.dao.BlogDAOImpl;
+import com.facechat.facechatbackend.dao.ForumCommentsDAO;
+import com.facechat.facechatbackend.dao.ForumCommentsDAOImpl;
 import com.facechat.facechatbackend.dao.ForumDAO;
 import com.facechat.facechatbackend.dao.ForumDAOImpl;
 import com.facechat.facechatbackend.dao.JobDAO;
@@ -21,7 +25,9 @@ import com.facechat.facechatbackend.dao.JobDAOImpl;
 import com.facechat.facechatbackend.dao.UserDAO;
 import com.facechat.facechatbackend.dao.UserDAOImpl;
 import com.facechat.facechatbackend.model.Blog;
+import com.facechat.facechatbackend.model.BlogComments;
 import com.facechat.facechatbackend.model.Forum;
+import com.facechat.facechatbackend.model.ForumComments;
 import com.facechat.facechatbackend.model.Job;
 import com.facechat.facechatbackend.model.UserDetail;
 
@@ -62,6 +68,9 @@ public class DBConfig
 			localSessionFactoryBuilder.addAnnotatedClass(UserDetail.class);
 			localSessionFactoryBuilder.addAnnotatedClass(Forum.class);
 			localSessionFactoryBuilder.addAnnotatedClass(Job.class);
+			localSessionFactoryBuilder.addAnnotatedClass(ForumComments.class);
+			localSessionFactoryBuilder.addAnnotatedClass(BlogComments.class);
+			
 			System.out.println("SessionFactory Bean Created");
 			return localSessionFactoryBuilder.buildSessionFactory();
 		}
@@ -70,7 +79,7 @@ public class DBConfig
 		public HibernateTransactionManager getHibernateTransactionManager(SessionFactory sessionFactory)
 		{
 			return new HibernateTransactionManager(sessionFactory);
-		}
+		} 
 		
 		@Bean("blogDAO")
 		public BlogDAO getBlogDAO(SessionFactory sessionFactory)
@@ -95,5 +104,17 @@ public class DBConfig
 		{
 			System.out.println("Job DAO object Created");
 			return new JobDAOImpl(sessionFactory);
+		}
+		@Bean("forumCommentsDAO")
+		public ForumCommentsDAO getForumCommentsDAO(SessionFactory sessionFactory)
+		{
+			System.out.println("ForumComments DAO object Created");
+			return new ForumCommentsDAOImpl(sessionFactory);
+		}
+		@Bean("blogCommentsDAO")
+		public BlogCommentsDAO getBlogCommentsDAO(SessionFactory sessionFactory)
+		{
+			System.out.println("BlogComments DAO object Created");
+			return new BlogCommentsDAOImpl(sessionFactory);
 		}
 }

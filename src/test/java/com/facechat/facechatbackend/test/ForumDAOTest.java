@@ -64,7 +64,7 @@ public class ForumDAOTest {
 			assertNotNull("Forum List not found",ForumList.get(0));
 			for(Forum Forum:ForumList)
 			{
-				System.out.println("Forum Id:"+ Forum.getForumId()+":::"+ "Forum Name"+Forum.getForumName());
+		 		System.out.println("Forum Id:"+ Forum.getForumId()+":::"+ "Forum Name"+Forum.getForumName());
 			}
 			
 		}
