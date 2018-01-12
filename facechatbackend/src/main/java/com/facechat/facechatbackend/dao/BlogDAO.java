@@ -13,6 +13,7 @@ public interface BlogDAO
 	public List<Blog> getAllBlogs();
 	public boolean approveBlog(Blog blog);
 	boolean rejectBlog(Blog blog);
+	public boolean incrementLike(Blog tempblog);
 }
 
 

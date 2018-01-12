@@ -19,6 +19,7 @@ import com.facechat.facechatbackend.dao.ForumDAO;
 import com.facechat.facechatbackend.model.Forum;
 import com.facechat.facechatbackend.model.Forum;
 
+
 public class ForumDAOTest {
 
 	static ForumDAO forumDAO;
@@ -40,7 +41,7 @@ public class ForumDAOTest {
 		{
 			Forum Forum=new Forum();
 			
-			Forum.setForumId(1001);
+			Forum.setForumId(1004);
 			Forum.setForumName("Core Java");
 			Forum.setForumContent("It is based on Simple Java Concept");
 			Forum.setUsername("sunil");
@@ -53,7 +54,9 @@ public class ForumDAOTest {
 		
 		}
 		
-	@Ignore
+
+
+	
 		@Test
 		public void getAllForumTest()
 		{
@@ -61,7 +64,7 @@ public class ForumDAOTest {
 			assertNotNull("Forum List not found",ForumList.get(0));
 			for(Forum Forum:ForumList)
 			{
-				System.out.println("Forum Id:"+ Forum.getForumId()+":::"+ "Forum Name"+Forum.getForumName());
+		 		System.out.println("Forum Id:"+ Forum.getForumId()+":::"+ "Forum Name"+Forum.getForumName());
 			}
 			
 		}
@@ -92,7 +95,7 @@ public class ForumDAOTest {
 			
 			}
 
-		
+		@Ignore
 		@Test 
 		public void rejectForum()
 		{
