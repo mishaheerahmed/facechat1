@@ -22,19 +22,18 @@ static FriendDAO friendDAO;
 	public static void initialize()
 	{
 		AnnotationConfigApplicationContext context=new AnnotationConfigApplicationContext();
-		context.scan("com.collaboration");
+		context.scan("com.facechat.facechatbackend");
 	    context.refresh();
 	    
 	    friendDAO=(FriendDAO) context.getBean("friendDAO");
 	}
 	
-@Ignore	
 @Test
 public void CreateFriendTest()
 {
 	Friend friend=new Friend();
-	friend.setUsername("amith");
-	friend.setFriendname("pradeep");
+	friend.setUsername("shaheer");
+	friend.setFriendname("rohit");
 	friend.setStatus("R");
 	
 	assertTrue("problem in Adding",friendDAO.createFriend(friend));
@@ -47,7 +46,7 @@ public void getAllFriendRequest()
 {
 	System.out.println("get All friend Request");
 
-List<Friend> listfriends=friendDAO.getAllFriendRequest("amith");
+List<Friend> listfriends=friendDAO.getAllFriendRequest("shaheer");
 assertNotNull("problem in get all friend",listfriends);
 
 for(Friend friend:listfriends)
@@ -71,7 +70,7 @@ public void getFriendId()
 }
 
 
-@Ignore	
+@Ignore
 @Test
 public void getAllApprovedFriendTest()
 {
@@ -86,12 +85,11 @@ public void getAllApprovedFriendTest()
 		System.out.println("Friend Name----"+friend.getStatus());
 	}
 }
-
 @Ignore
 @Test
 public void approvedFriendrequest()
 {
-	Friend friend=friendDAO.getFriend(225);
+	Friend friend=friendDAO.getFriend(204);
 	assertTrue("Problem in Approving",friendDAO.approveFriendRequest(friend));
 }
 

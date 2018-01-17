@@ -36,7 +36,7 @@ public class FriendDAOimpl implements FriendDAO
 		List<Friend> listfriends=query.list();
 		return listfriends;
 	}
-
+	@Transactional
 	@Override
 	public List<Friend> getApprovedFriends(String username) 
 	{
@@ -49,9 +49,9 @@ public class FriendDAOimpl implements FriendDAO
 
 
 
-
+	@Transactional
 	@Override
-	public boolean createFriend(com.facechat.facechatbackend.model.Friend friend) {
+	public boolean createFriend(Friend friend) {
 		try
 		{
 			sessionFactory.getCurrentSession().save(friend);
@@ -64,7 +64,7 @@ public class FriendDAOimpl implements FriendDAO
 		}
 		}
 
-
+	@Transactional
 	@Override
 	public Friend getFriend(int friendId) {
 		Session session=sessionFactory.openSession();
@@ -73,9 +73,9 @@ public class FriendDAOimpl implements FriendDAO
 
 	}
 
-
+	@Transactional
 	@Override
-	public boolean rejectFriendRequest(com.facechat.facechatbackend.model.Friend friend) {
+	public boolean rejectFriendRequest(Friend friend) {
 		try
 		{
 			friend.setStatus("R");
@@ -88,9 +88,9 @@ public class FriendDAOimpl implements FriendDAO
 			return false;
 		}	}
 
-
+@Transactional
 	@Override
-	public boolean approveFriendRequest(com.facechat.facechatbackend.model.Friend friend) {
+	public boolean approveFriendRequest(Friend friend) {
 		try
 		{
 			friend.setStatus("A");

@@ -37,8 +37,8 @@ public class UserDAOTest {
 	public void addTest()
 	{
 		UserDetail user=new UserDetail();		
-		user.setUsername("mmm");
-		user.setRole("user");
+		user.setUsername("rohit");
+		user.setRole("USER");
 		user.setEmailID("abc@gmail.com");
 		user.setIsOnline("N");
 		user.setPassword("aabb");	
@@ -76,8 +76,8 @@ public class UserDAOTest {
 	@Test
 	public void UpdateUserTest()
 	{
-		UserDetail user=(UserDetail)userDAO.getUser("Shaheer");
-		user.setUsername("Shaheer");
+		UserDetail user=(UserDetail)userDAO.getUser("mmm");
+		user.setRole("USER");
 		user.setEmailID("shaheerahmed@gmsil.com");
 		assertTrue("Problem in updating", userDAO.updateUser(user));
 	}
