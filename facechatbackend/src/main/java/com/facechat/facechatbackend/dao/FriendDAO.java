@@ -13,5 +13,7 @@ public List<Friend> getApprovedFriends(String username);
 public Friend getFriend(int friendId);
 public boolean rejectFriendRequest(Friend friend);
 public boolean approveFriendRequest(Friend friend);
+public Friend getfriendbyid(int friendid);
+public boolean deletefriend(Friend f);
 
 }

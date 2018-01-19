@@ -105,4 +105,31 @@ public class FriendDAOimpl implements FriendDAO
 			}
 
 
+@Override
+public Friend getfriendbyid(int friendid) {
+	 Session session=sessionFactory.openSession();
+	    Friend f=(Friend) session.get(Friend.class,new Integer(friendid));
+	    session.flush();
+	    session.close();
+		return f;
+}
+
+
+@Transactional
+public boolean deletefriend(Friend f)
+{
+try
+	{
+	sessionFactory.getCurrentSession().delete(f);
+	 System.out.println("friend deleted successfully");
+	return true;
+	}
+	catch(Exception e)
+	{
+	System.out.println(e);
+	return false;	
+}
+}
+
+
 }//class close

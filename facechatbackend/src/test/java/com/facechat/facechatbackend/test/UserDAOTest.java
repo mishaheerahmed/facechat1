@@ -37,7 +37,7 @@ public class UserDAOTest {
 	public void addTest()
 	{
 		UserDetail user=new UserDetail();		
-		user.setUsername("rohit");
+		user.setUsername("rohi");
 		user.setRole("USER");
 		user.setEmailID("abc@gmail.com");
 		user.setIsOnline("N");

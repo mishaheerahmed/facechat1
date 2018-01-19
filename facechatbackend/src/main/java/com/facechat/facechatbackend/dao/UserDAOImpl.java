@@ -1,5 +1,6 @@
 package com.facechat.facechatbackend.dao;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import org.hibernate.Query;
@@ -13,6 +14,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
 
+import com.facechat.facechatbackend.model.Friend;
 import com.facechat.facechatbackend.model.UserDetail;
 
 @Repository("userDAO")
@@ -126,4 +128,22 @@ public class UserDAOImpl  implements UserDAO{
 		   session.close();
 		    return user;
 	   }
+  
+
+	
+	@Transactional
+	@Override
+	public List<UserDetail> getalluser1(UserDetail u) 
+	{
+		System.out.println(u.getUsername());
+		Session session=sessionFactory.openSession();
+		String hql="from UserDetail where role!=:admin and username!=:user";
+		Query query=session.createQuery(hql);
+		query.setParameter("admin","ADMIN");
+		query.setParameter("user",u.getUsername());
+		
+		return query.list();
+
+	}
 }
+

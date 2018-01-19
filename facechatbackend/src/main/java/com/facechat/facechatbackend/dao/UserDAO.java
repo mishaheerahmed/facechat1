@@ -1,5 +1,6 @@
 package com.facechat.facechatbackend.dao;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import org.springframework.stereotype.Service;
@@ -20,4 +21,6 @@ public interface UserDAO {
    public List<UserDetail> getAllUsers();
 public boolean deleteUser(UserDetail user);
 public UserDetail getUser(String username);
+
+public List<UserDetail> getalluser1(UserDetail u);
 }
